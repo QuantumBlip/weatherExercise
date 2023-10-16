@@ -16,9 +16,9 @@ export default function Position() {
             console.log(status)
             try {
                 if (status !== 'granted') {
-                    setMessage("Location not permittd.")
+                    setMessage("Location not permitted.")
                 } else {
-                    const position = await Location.getCurrentPositionAsync({ accuracy: Location.Accuracy.Lowest })
+                    const position = await Location.getCurrentPositionAsync({ accuracy: Location.Accuracy.High })
                     setLatitude(position.coords.latitude)
                     setLongitude(position.coords.longitude)
                     setMessage('Location retrieved')
@@ -28,7 +28,7 @@ export default function Position() {
                 console.log(error)
             }
             setIsLoading(false)
-        })
+        })()
     }, [])
 
     return (
